@@ -1,12 +1,8 @@
-﻿@{
+﻿@model CjbHome.ViewModels.Home.IndexViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
-
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>*@
 
 <div class="main-header">
     <h1 >CreJB</h1>
@@ -21,11 +17,11 @@
                 <p>Thoughts</p>
             </div>
             <div class="col-md-11">
-                <p>
-                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                    enables a clean separation of concerns and gives you full control over markup
-                    for enjoyable, agile development.
-                </p>
+                <p>Recent Posts</p>
+                @foreach (var post in Model.RecentPosts)
+                {
+                    <p>@Html.ActionLink(string.Format("{0} on {1}", post.Title, post.PostTime), "View", "Blog", new { id=post.Id }, null)</p>
+                }
                 <a href="" class="pull-right">More thoughts...</a>
             </div>
         </div>
