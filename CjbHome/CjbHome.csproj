@@ -159,11 +159,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataAccess\BlogPostMigrations\201508181134570_Initial create.cs" />
     <Compile Include="DataAccess\BlogPostMigrations\201508181134570_Initial create.Designer.cs">
       <DependentUpon>201508181134570_Initial create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.cs" />
+    <Compile Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.Designer.cs">
+      <DependentUpon>201508191142575_ChangeBlogPost.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\BlogPostMigrations\Configuration.cs" />
     <Compile Include="DataAccess\CjbHomeDataContext.cs" />
@@ -257,6 +262,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Blog\ViewPost.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,6 +275,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508181134570_Initial create.resx">
       <DependentUpon>201508181134570_Initial create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.resx">
+      <DependentUpon>201508191142575_ChangeBlogPost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAccess\IdentityMigrations\201508181135550_Initial create.resx">
       <DependentUpon>201508181135550_Initial create.cs</DependentUpon>

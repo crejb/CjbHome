@@ -31,9 +31,9 @@ namespace CjbHome.DataAccess.BlogPostMigrations
 
             context.BlogPosts.AddOrUpdate(
                 p => p.Title,
-                new BlogPost { Title = "First post", IsDraft = false, PostTime = new DateTime(2015, 8, 15), Content = "Here are some words" },
-                new BlogPost { Title = "Second post", IsDraft = false, PostTime = new DateTime(2015, 8, 16), Content = "Here are some more words" },
-                new BlogPost { Title = "Even more post", IsDraft = false, PostTime = new DateTime(2015, 8, 17), Content = "Here are some different words" }
+                new BlogPost { Title = "First post", LinkText="FirstPost", PostTime = new DateTime(2015, 8, 15), Content = "Here are some words" },
+                new BlogPost { Title = "Second post", LinkText = "SecondPost", PostTime = new DateTime(2015, 8, 16), Content = "Here are some more words" },
+                new BlogPost { Title = "Even more post", LinkText = "EvenMorePost", PostTime = new DateTime(2015, 8, 17), Content = "Here are some different words" }
                 );
         }
     }
