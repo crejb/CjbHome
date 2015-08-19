@@ -5,7 +5,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row" style="margin-top:50px">
+<div class="row" style="margin-top:20px">
     <div>
         <div class="col-md-1 text-center">
             <img src="../../Content/images/light-small.png" width="50" height="50" />
@@ -17,38 +17,40 @@
             @foreach (var post in Model.RecentPosts)
             {
                 <div class="post-title">
-                    <h3>@Html.ActionLink(string.Format("{0}", post.Title), "View", "Blog", new { id = post.Id }, null)</h3><span class="post-subtitle"> on @post.PostTime</span>
+                    @*<h3>@Html.ActionLink(string.Format("{0}", post.Title), "", "Blog", new { id = post.LinkText }, null)</h3><span class="post-subtitle"> on @post.PostTime</span>*@
+                    <h3>@Html.ActionLink(string.Format("{0}", post.Title), post.LinkText, "Blog")</h3><span class="post-subtitle"> on @post.PostTime</span>
                 </div>
             }
-            <a href="" class="pull-left" style="margin-top:20px">More thoughts...</a>
+            @Html.ActionLink("More thoughts...", "Index", "Blog", null, new { @class="pull-left", style="margin-top:20px" })
+            @*<a href="" class="pull-left" style="margin-top:20px">More thoughts...</a>*@
         </div>
     </div>
 </div>
 
 <hr />
 
-<div class="row" style="margin-top:50px">
+<div class="row" style="margin-top:20px">
     <div>
-        <div class="col-md-1 col-md-push-11 text-center">
+        <div class="col-md-1 text-center">
             <img src="../../Content/images/flask-small.png" width="50" height="50" />
         </div>
-        <div class="col-md-11 col-md-pull-1">
-            <div style="margin-bottom:20px; text-align: right">
+        <div class="col-md-11">
+            <div style="margin-bottom:20px">
                 <h2>Projects</h2>
             </div>
-            <p style="text-align: right">
-                Show me the code! I like to tinker with new software development tools 
-                and technologies. This section shows some of the spare time projects I have 
+            <p>
+                Show me the code! I like to tinker with new software development tools
+                and technologies. This section shows some of the spare time projects I have
                 worked on. 
             </p>
-            <a href="" class="pull-right">More projects...</a>
+            <a href="" class="pull-left">More projects...</a>
         </div>
     </div>
 </div>
 
 <hr />
 
-<div class="row" style="margin-top:50px">
+<div class="row" style="margin-top:20px">
     <div>
         <div class="col-md-1 text-center">
             <img src="../../Content/images/question-small.png" width="50" height="50" />
@@ -58,7 +60,8 @@
                 <h2>About Me</h2>
             </div>
             <p>
-                I am a husband, a dad and a software developer, based in Brisbane, Australia. 
+                I am a software developer based in Brisbane, Australia. I have previously lived and worked in Sydney and Amsterdam, Netherlands.
+                I am also a husband and a dad, and I enjoy reading, hiking, camping, football, writing and travelling.
             </p>
             <a href="" class="pull-left">Contact me...</a>
         </div>
