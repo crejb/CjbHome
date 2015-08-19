@@ -17,12 +17,10 @@
             @foreach (var post in Model.RecentPosts)
             {
                 <div class="post-title">
-                    @*<h3>@Html.ActionLink(string.Format("{0}", post.Title), "", "Blog", new { id = post.LinkText }, null)</h3><span class="post-subtitle"> on @post.PostTime</span>*@
                     <h3>@Html.ActionLink(string.Format("{0}", post.Title), post.LinkText, "Blog")</h3><span class="post-subtitle"> on @post.PostTime</span>
                 </div>
             }
             @Html.ActionLink("More thoughts...", "Index", "Blog", null, new { @class="pull-left", style="margin-top:20px" })
-            @*<a href="" class="pull-left" style="margin-top:20px">More thoughts...</a>*@
         </div>
     </div>
 </div>
