@@ -23,7 +23,13 @@ textarea {
     max-width: 280px;
 }
 
-
+.post-title h1, h2, h3 { display: inline; }
+.post-subtitle {
+  color: #808080;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+}
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
