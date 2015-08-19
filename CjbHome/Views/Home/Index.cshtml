@@ -4,51 +4,46 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="main-header">
-    <h1 >CreJB</h1>
-    <h2 >Blog home is here</h2>
-</div>
-
-
-<div class="panel panel-default" style="margin-top:50px">
-    <div class="panel-body">
-            <div class="col-md-1 text-center">
-                <img src="../../Content/images/light-small.png" width="50" height="50" />
-                <p>Thoughts</p>
-            </div>
-            <div class="col-md-11">
-                <p>Recent Posts</p>
-                @foreach (var post in Model.RecentPosts)
-                {
-                    <p>@Html.ActionLink(string.Format("{0} on {1}", post.Title, post.PostTime), "View", "Blog", new { id=post.Id }, null)</p>
-                }
-                <a href="" class="pull-right">More thoughts...</a>
-            </div>
+<div class="row" style="margin-top:50px">
+    <div>
+        <div class="col-md-1 text-center">
+            <img src="../../Content/images/light-small.png" width="50" height="50" />
         </div>
-</div>
-
-<div class="panel panel-default" style="margin-top:50px">
-    <div class="panel-body">
-            <div class="col-md-1 col-md-push-11 text-center">
-                <img src="../../Content/images/flask-small.png" width="50" height="50" />
-                <p>Lots of Projects</p>
-            </div>
-            <div class="col-md-11 col-md-pull-1">
-                <p style="text-align: right">
-                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                    enables a clean separation of concerns and gives you full control over markup
-                    for enjoyable, agile development.
-                </p>
-                <a href="" class="pull-right">More projects...</a>
-            </div>
+        <div class="col-md-11">
+            <p>Recent Posts</p>
+            @foreach (var post in Model.RecentPosts)
+            {
+                <p>@Html.ActionLink(string.Format("{0} on {1}", post.Title, post.PostTime), "View", "Blog", new { id = post.Id }, null)</p>
+            }
+            <a href="" class="pull-left">More thoughts...</a>
         </div>
+    </div>
 </div>
 
-<div class="panel panel-default" style="margin-top:50px">
-    <div class="panel-body">
+<hr />
+
+<div class="row" style="margin-top:50px">
+    <div>
+        <div class="col-md-1 col-md-push-11 text-center">
+            <img src="../../Content/images/flask-small.png" width="50" height="50" />
+        </div>
+        <div class="col-md-11 col-md-pull-1">
+            <p style="text-align: right">
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <a href="" class="pull-right">More projects...</a>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row" style="margin-top:50px">
+    <div>
         <div class="col-md-1 text-center">
             <img src="../../Content/images/question-small.png" width="50" height="50" />
-            <p>About</p>
         </div>
         <div class="col-md-11">
             <p>
@@ -56,7 +51,7 @@
                 enables a clean separation of concerns and gives you full control over markup
                 for enjoyable, agile development.
             </p>
-            <a href="" class="pull-right">More About...</a>
+            <a href="" class="pull-left">More About...</a>
         </div>
     </div>
 </div>
