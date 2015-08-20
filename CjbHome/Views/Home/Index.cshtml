@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Home Page";
+    ViewBag.TitleImage = "../../Content/images/header-2.png";
 }
 
 <div class="row" style="margin-top:20px">
@@ -16,11 +17,14 @@
             </div>
             @foreach (var post in Model.RecentPosts)
             {
-                <div class="post-title">
-                    <h3>@Html.ActionLink(string.Format("{0}", post.Title), post.LinkText, "Blog")</h3><span class="post-subtitle"> on @post.PostTime</span>
+                <div>
+                    <a href="@Url.Action(post.LinkText, "Blog")">
+                        <div class="post-preview-title">@post.Title</div>
+                        <div class="post-preview-subtitle">Posted on @post.PostTime</div>
+                    </a>
                 </div>
             }
-            @Html.ActionLink("More thoughts...", "Index", "Blog", null, new { @class="pull-left", style="margin-top:20px" })
+            @Html.ActionLink("More thoughts >>", "Index", "Blog", null, new { @class="pull-left", style="margin-top:20px" })
         </div>
     </div>
 </div>
@@ -41,7 +45,7 @@
                 and technologies. This section shows some of the spare time projects I have
                 worked on. 
             </p>
-            <a href="" class="pull-left">More projects...</a>
+            <a href="" class="pull-left">More projects >></a>
         </div>
     </div>
 </div>
@@ -61,7 +65,7 @@
                 I am a software developer based in Brisbane, Australia. I have previously lived and worked in Sydney and Amsterdam, Netherlands.
                 I am also a husband and a dad, and I enjoy reading, hiking, camping, football, writing and travelling.
             </p>
-            <a href="" class="pull-left">Contact me...</a>
+            <a href="" class="pull-left">Contact me >></a>
         </div>
     </div>
 </div>
