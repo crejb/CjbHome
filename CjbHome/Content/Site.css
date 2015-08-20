@@ -23,12 +23,44 @@ textarea {
     max-width: 280px;
 }
 
-.post-title h1, h2, h3 { display: inline; }
-.post-subtitle {
+/*.post-preview-title h1, h2, h3 { display: inline; }*/
+
+a {
+    color: #404040;
+}
+
+a:hover, a:focus{
+    color: #0085a1;
+    text-decoration: none;
+}
+
+.post-main-title {
+  font-size: 36px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.post-main-subtitle {
   color: #808080;
   font-size: 18px;
   font-style: italic;
   margin-top: 0;
+}
+
+.post-preview-title {
+  font-weight: 300;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  display: inline;
+}
+
+.post-preview-subtitle {
+  color: #808080;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+  display: inline;
 }
 
 body {

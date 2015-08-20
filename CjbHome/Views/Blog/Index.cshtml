@@ -2,50 +2,20 @@
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.TitleImage = "https://lh3.googleusercontent.com/-1uHFvXxlKE4/UnLDpJPvOhI/AAAAAAAAEXA/8lXyGIMoCXg/s800-Ic42/IMG_8042.JPG";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LinkText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LinkText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        @foreach (var post in Model)
+        {
+            <div>
+                <a href="@Url.Action(post.LinkText)">
+                    <h2 class="post-main-title">@post.Title</h2>
+                    <p class="post-main-subtitle">Posted on @post.PostTime</p>
+                </a>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
