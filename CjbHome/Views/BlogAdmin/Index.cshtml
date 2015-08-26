@@ -24,9 +24,6 @@
             @Html.DisplayNameFor(model => model.PostTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.HeaderImageUrl)
         </th>
         <th></th>
@@ -47,15 +44,17 @@
             @Html.DisplayFor(modelItem => item.PostTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.HeaderImageUrl)
         </td>
         <td>
             @Html.ActionLink("View", "ViewPost", "Blog", new { id = item.LinkText }, null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            @Html.DisplayFor(modelItem => item.Content)
         </td>
     </tr>
 }
