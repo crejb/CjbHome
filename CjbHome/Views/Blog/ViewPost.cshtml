@@ -1,51 +1,23 @@
 ﻿@model CjbHome.Models.BlogPost
 
 @{
-    ViewBag.Title = "Details";
-    ViewBag.TitleImage = "https://lh3.googleusercontent.com/-NbXzKZP9S2s/T1ug_tiqhhI/AAAAAAAAAJg/42YHpbwNfIQ/s800-Ic42/IMG_3248.JPG";
+    ViewBag.Title = Model.Title;
+    var defaultTitleImage = "https://lh3.googleusercontent.com/-NbXzKZP9S2s/T1ug_tiqhhI/AAAAAAAAAJg/42YHpbwNfIQ/s800-Ic42/IMG_3248.JPG";
+    ViewBag.TitleImage = Model.HeaderImageUrl ?? defaultTitleImage;
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>BlogPost</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LinkText)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LinkText)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-    </dl>
+    @Model.Content
 </div>
+
+<hr />
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    Posted on @Model.PostTime
+</p>
+
+<p>
+    @Html.ActionLink("Back to blog index", "Index")
 </p>

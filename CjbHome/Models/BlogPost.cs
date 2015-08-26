@@ -18,5 +18,7 @@ namespace CjbHome.Models
         public DateTime PostTime { get; set; }
         [Required]
         public string Content { get; set; }
+
+        public string HeaderImageUrl { get; set; }
     }
 }

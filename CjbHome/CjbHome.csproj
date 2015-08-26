@@ -170,6 +170,10 @@
     <Compile Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.Designer.cs">
       <DependentUpon>201508191142575_ChangeBlogPost.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.cs" />
+    <Compile Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.Designer.cs">
+      <DependentUpon>201508261030526_AddLinkImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\BlogPostMigrations\Configuration.cs" />
     <Compile Include="DataAccess\CjbHomeDataContext.cs" />
     <Compile Include="DataAccess\IdentityMigrations\201508181135550_Initial create.cs" />
@@ -278,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.resx">
       <DependentUpon>201508191142575_ChangeBlogPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.resx">
+      <DependentUpon>201508261030526_AddLinkImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAccess\IdentityMigrations\201508181135550_Initial create.resx">
       <DependentUpon>201508181135550_Initial create.cs</DependentUpon>
