@@ -14,8 +14,9 @@
 
 <hr />
 
-<p>
-    Posted on @Model.PostTime
+
+<p class="post-main-subtitle">
+    Posted on @Html.DisplayFor(model => model.PostDate) at @Html.DisplayFor(model => model.PostTime)
 </p>
 
 <p>

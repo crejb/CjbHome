@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogAdminController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -173,6 +174,10 @@
     <Compile Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.cs" />
     <Compile Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.Designer.cs">
       <DependentUpon>201508261030526_AddLinkImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\BlogPostMigrations\201508261203346_BlogPostTime.cs" />
+    <Compile Include="DataAccess\BlogPostMigrations\201508261203346_BlogPostTime.Designer.cs">
+      <DependentUpon>201508261203346_BlogPostTime.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\BlogPostMigrations\Configuration.cs" />
     <Compile Include="DataAccess\CjbHomeDataContext.cs" />
@@ -268,6 +273,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Blog\ViewPost.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\BlogAdmin\Create.cshtml" />
+    <Content Include="Views\BlogAdmin\Delete.cshtml" />
+    <Content Include="Views\BlogAdmin\Edit.cshtml" />
+    <Content Include="Views\BlogAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.resx">
       <DependentUpon>201508261030526_AddLinkImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508261203346_BlogPostTime.resx">
+      <DependentUpon>201508261203346_BlogPostTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAccess\IdentityMigrations\201508181135550_Initial create.resx">
       <DependentUpon>201508181135550_Initial create.cs</DependentUpon>

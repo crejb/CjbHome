@@ -20,7 +20,7 @@
                 <div>
                     <a href="@Url.Action(post.LinkText, "Blog")">
                         <div class="post-preview-title">@post.Title</div>
-                        <div class="post-preview-subtitle">Posted on @post.PostTime</div>
+                        <div class="post-preview-subtitle">Posted on @Html.DisplayFor(model => post.PostDate)</div>
                     </a>
                 </div>
             }
