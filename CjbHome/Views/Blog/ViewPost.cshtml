@@ -19,6 +19,8 @@
     Posted on @Html.DisplayFor(model => model.PostDate) at @Html.DisplayFor(model => model.PostTime)
 </p>
 
-<p>
-    @Html.ActionLink("Back to blog index", "Index")
+<p class="text-center footer-text">
+    @Html.ActionLink("<< Previous Post", "Index") | @Html.ActionLink("Home", "Index") | @Html.ActionLink("Next Post >>", "Index")
 </p>
+
+
