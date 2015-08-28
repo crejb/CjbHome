@@ -1,26 +1,34 @@
-﻿@model CjbHome.Models.BlogPost
+﻿@model CjbHome.ViewModels.Blog.ViewPostViewModel
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.Post.Title;
     var defaultTitleImage = "https://lh3.googleusercontent.com/-NbXzKZP9S2s/T1ug_tiqhhI/AAAAAAAAAJg/42YHpbwNfIQ/s800-Ic42/IMG_3248.JPG";
-    ViewBag.TitleImage = Model.HeaderImageUrl ?? defaultTitleImage;
+    ViewBag.TitleImage = Model.Post.HeaderImageUrl ?? defaultTitleImage;
 }
 
 <h2>@ViewBag.Title</h2>
 
 <div>
-    @Model.Content
+    @Model.Post.Content
 </div>
 
 <hr />
 
 
 <p class="post-main-subtitle">
-    Posted on @Html.DisplayFor(model => model.PostDate) at @Html.DisplayFor(model => model.PostTime)
+    Posted on @Html.DisplayFor(model => model.Post.PostDate) at @Html.DisplayFor(model => model.Post.PostTime)
 </p>
 
 <p class="text-center footer-text">
-    @Html.ActionLink("<< Previous Post", "Index") | @Html.ActionLink("Home", "Index") | @Html.ActionLink("Next Post >>", "Index")
+    @if (Model.PreviousPost != null)
+    {
+        @Html.ActionLink(String.Format("<< {0}", Model.PreviousPost.Title), Model.PreviousPost.LinkText) @Html.Raw(" |")
+    }
+    @Html.ActionLink("Home", "Index")
+    @if (Model.NextPost != null)
+    {
+        @Html.Raw("| ") @Html.ActionLink(String.Format("{0} >>", Model.NextPost.Title), Model.NextPost.LinkText)
+    }
 </p>
 
 

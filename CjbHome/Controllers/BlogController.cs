@@ -8,17 +8,18 @@ using System.Web;
 using System.Web.Mvc;
 using CjbHome.DataAccess;
 using CjbHome.Models;
+using CjbHome.ViewModels.Blog;
 
 namespace CjbHome.Controllers
 {
     public class BlogController : Controller
     {
-        private BlogPostDb db = new BlogPostDb();
+        private readonly BlogPostDb _db = new BlogPostDb();
 
         // GET: Blog
         public ActionResult Index()
         {
-            return View(db.BlogPosts.ToList());
+            return View(_db.BlogPosts.ToList());
         }
 
         // GET: Blog/Title
@@ -29,35 +30,42 @@ namespace CjbHome.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.LinkText == id);
+
+            BlogPost blogPost = _db.BlogPosts.FirstOrDefault(p => p.LinkText == id);
             if (blogPost == null)
             {
                 return HttpNotFound();
             }
-            return View("ViewPost", blogPost);
-        }
 
-        //// GET: Blog/5
-        //[Route("Blog/{id}")]
-        //public ActionResult ViewPost(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    BlogPost blogPost = db.BlogPosts.Find(id);
-        //    if (blogPost == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View("ViewPost", blogPost);
-        //}
+            // Get the previous post- the latest one before the current one
+            var prevPost = _db.BlogPosts
+                .Where(p => p.PostDate < blogPost.PostDate || (p.PostDate == blogPost.PostDate && p.PostTime < blogPost.PostTime))
+                .OrderByDescending(p => p.PostDate)
+                .ThenByDescending(p => p.PostTime)
+                .FirstOrDefault();
+
+            // Get the next post- the earliest one after the current one
+            var nextPost = _db.BlogPosts
+                .Where(p => p.PostDate > blogPost.PostDate || (p.PostDate == blogPost.PostDate && p.PostTime > blogPost.PostTime))
+                .OrderBy(p => p.PostDate)
+                .ThenBy(p => p.PostTime)
+                .FirstOrDefault();
+
+            var viewModel = new ViewPostViewModel
+            {
+                Post = blogPost,
+                PreviousPost = prevPost,
+                NextPost = nextPost
+            };
+
+            return View("ViewPost", viewModel);
+        }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
