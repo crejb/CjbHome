@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CjbHome.DataAccess;
 using CjbHome.Models;
+using System.IO;
 
 namespace CjbHome.Controllers
 {
@@ -99,6 +100,22 @@ namespace CjbHome.Controllers
             db.BlogPosts.Remove(blogPost);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Export()
+        {
+            var xml = CjbHome.Services.ImportExportService.GetExportedData(db.BlogPosts);
+            var xmlBytes = System.Text.Encoding.ASCII.GetBytes(xml);
+            var stream = new MemoryStream(xmlBytes);
+
+            var filename = string.Format("CjbExport_{0}.xml", DateTime.Now.ToString("yyyyMMdd"));
+
+            return new FileStreamResult(stream, "text/xml") { FileDownloadName = filename };
+        }
+
+        public ActionResult Import()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)
