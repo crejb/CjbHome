@@ -12,6 +12,7 @@ using System.IO;
 
 namespace CjbHome.Controllers
 {
+    [Authorize]
     public class BlogAdminController : Controller
     {
         private BlogPostDb db = new BlogPostDb();
