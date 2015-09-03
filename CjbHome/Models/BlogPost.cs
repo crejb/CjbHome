@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CjbHome.Models
 {
@@ -22,6 +23,7 @@ namespace CjbHome.Models
         [DisplayFormat(DataFormatString = "{0:HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime PostTime { get; set; }
         [Required]
+        [AllowHtml]
         public string Content { get; set; }
 
         [DataType(DataType.ImageUrl)]
