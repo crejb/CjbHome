@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -86,8 +86,8 @@ h6 {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 10px;
-  height:300px;
+  margin-bottom: 0px;
+  height:310px;
 }
 
 .intro-header .site-heading,
@@ -100,7 +100,7 @@ h6 {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 100px 0;
+    padding: 75px 0;
   }
 }
 .intro-header .site-heading,
@@ -206,4 +206,19 @@ h6 {
 }
 .social-footer i.fa-envelope:hover {
     background:#dd4b39;
+}
+
+.menu-fixed{
+    top: 0;
+    position: fixed;
+}
+
+.menu{
+    border-width: 0 0 1px;
+    border-radius: 0;
+    padding-right: 0;
+    padding-left: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
