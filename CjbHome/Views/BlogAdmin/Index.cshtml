@@ -7,15 +7,9 @@
 <h2>Admin Home</h2>
 
 <p>
-    @Html.ActionLink("Create New Post", "Create")
-</p>
-
-<p>
-    @Html.ActionLink("Export Posts", "Export")
-</p>
-
-<p>
-    @Html.ActionLink("Import Post", "Import")
+    @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-sm btn-primary" })
+    @Html.ActionLink("Export Posts", "Export", null, new { @class = "btn btn-sm btn-primary" })
+    @Html.ActionLink("Import Posts", "Import", null, new { @class = "btn btn-sm btn-danger" })
 </p>
 
 <table class="table">
@@ -59,11 +53,6 @@
             @Html.ActionLink("View", "ViewPost", "Blog", new { id = item.LinkText }, null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-    <tr>
-        <td colspan="5">
-            @Html.DisplayFor(modelItem => item.Content)
         </td>
     </tr>
 }
