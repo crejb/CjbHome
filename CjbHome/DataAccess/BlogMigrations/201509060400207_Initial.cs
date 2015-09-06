@@ -1,21 +1,23 @@
-namespace CjbHome.DataAccess.BlogPostMigrations
+namespace CjbHome.DataAccess.BlogMigrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initialcreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.BlogPosts",
+                "CjbHome.BlogPosts",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        LinkText = c.String(nullable: false),
                         Title = c.String(nullable: false),
+                        PostDate = c.DateTime(nullable: false),
                         PostTime = c.DateTime(nullable: false),
-                        IsDraft = c.Boolean(nullable: false),
-                        Content = c.String(),
+                        Content = c.String(nullable: false),
+                        HeaderImageUrl = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -23,7 +25,7 @@ namespace CjbHome.DataAccess.BlogPostMigrations
         
         public override void Down()
         {
-            DropTable("dbo.BlogPosts");
+            DropTable("CjbHome.BlogPosts");
         }
     }
 }

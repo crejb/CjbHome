@@ -163,27 +163,15 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DataAccess\BlogPostMigrations\201508181134570_Initial create.cs" />
-    <Compile Include="DataAccess\BlogPostMigrations\201508181134570_Initial create.Designer.cs">
-      <DependentUpon>201508181134570_Initial create.cs</DependentUpon>
+    <Compile Include="DataAccess\BlogMigrations\201509060400207_Initial.cs" />
+    <Compile Include="DataAccess\BlogMigrations\201509060400207_Initial.Designer.cs">
+      <DependentUpon>201509060400207_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.cs" />
-    <Compile Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.Designer.cs">
-      <DependentUpon>201508191142575_ChangeBlogPost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.cs" />
-    <Compile Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.Designer.cs">
-      <DependentUpon>201508261030526_AddLinkImage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\BlogPostMigrations\201508261203346_BlogPostTime.cs" />
-    <Compile Include="DataAccess\BlogPostMigrations\201508261203346_BlogPostTime.Designer.cs">
-      <DependentUpon>201508261203346_BlogPostTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\BlogPostMigrations\Configuration.cs" />
+    <Compile Include="DataAccess\BlogMigrations\Configuration.cs" />
     <Compile Include="DataAccess\CjbHomeDataContext.cs" />
-    <Compile Include="DataAccess\IdentityMigrations\201508181135550_Initial create.cs" />
-    <Compile Include="DataAccess\IdentityMigrations\201508181135550_Initial create.Designer.cs">
-      <DependentUpon>201508181135550_Initial create.cs</DependentUpon>
+    <Compile Include="DataAccess\IdentityMigrations\201509060400307_Initial.cs" />
+    <Compile Include="DataAccess\IdentityMigrations\201509060400307_Initial.Designer.cs">
+      <DependentUpon>201509060400307_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\IdentityMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -239,7 +227,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -280,20 +270,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508181134570_Initial create.resx">
-      <DependentUpon>201508181134570_Initial create.cs</DependentUpon>
+    <EmbeddedResource Include="DataAccess\BlogMigrations\201509060400207_Initial.resx">
+      <DependentUpon>201509060400207_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508191142575_ChangeBlogPost.resx">
-      <DependentUpon>201508191142575_ChangeBlogPost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508261030526_AddLinkImage.resx">
-      <DependentUpon>201508261030526_AddLinkImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\BlogPostMigrations\201508261203346_BlogPostTime.resx">
-      <DependentUpon>201508261203346_BlogPostTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\IdentityMigrations\201508181135550_Initial create.resx">
-      <DependentUpon>201508181135550_Initial create.cs</DependentUpon>
+    <EmbeddedResource Include="DataAccess\IdentityMigrations\201509060400307_Initial.resx">
+      <DependentUpon>201509060400307_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

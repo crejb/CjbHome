@@ -2,7 +2,9 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Migrations.History;
 using System.Linq;
 using System.Web;
 
@@ -27,6 +29,12 @@ namespace CjbHome.DataAccess
         {
             return new BlogPostDb();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.HasDefaultSchema("CjbHome");
+        }
     }
 
     public class IdentityDb : IdentityDbContext<ApplicationUser>
@@ -40,5 +48,34 @@ namespace CjbHome.DataAccess
         {
             return new IdentityDb();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.HasDefaultSchema("CjbHome");
+        }
     }
+
+    public class MyHistoryContext : HistoryContext
+    {
+        public MyHistoryContext(DbConnection dbConnection, string defaultSchema)
+            : base(dbConnection, defaultSchema)
+        {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<HistoryRow>().ToTable("__MigrationHistory", schemaName: "CjbHome");
+        }
+    }
+
+    public class ModelConfiguration : DbConfiguration
+    {
+        public ModelConfiguration()
+        {
+            this.SetHistoryContext("System.Data.SqlClient",
+                (connection, defaultSchema) => new MyHistoryContext(connection, defaultSchema));
+        }
+    } 
 }

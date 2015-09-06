@@ -9,7 +9,7 @@ namespace CjbHome.DataAccess.IdentityMigrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             MigrationsDirectory = @"DataAccess\IdentityMigrations";
         }
 
