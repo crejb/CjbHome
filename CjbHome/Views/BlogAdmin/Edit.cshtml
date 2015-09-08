@@ -1,4 +1,7 @@
-﻿@model CjbHome.Models.BlogPost
+﻿@using CjbHome.ViewHelpers
+
+@model CjbHome.Models.BlogPost
+
 
 @{
     ViewBag.Title = "Edit";
@@ -60,9 +63,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })*@
-                <textarea id="Content" name="Content">@Html.Raw(Model.Content)</textarea>
+                <textarea id="Content" name="Content" rows="10">@Model.Content</textarea>
             </div>
         </div>
 
@@ -82,12 +83,4 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
-<script>
-tinymce.init(
-    {
-        selector: '#Content',
-        plugins: "link image code",
-        toolbar: ["bold italic underline alignleft aligncenter alignright alignjustify styleselect fontsizeselect",
-            "bullist numlist outdent indent blockquote link image removeformat"]
-    });</script>
+@Html.RenderTinyMceEditorInitialisation("#Content")
