@@ -4,6 +4,9 @@ namespace CjbHome.DataAccess.IdentityMigrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using CjbHome.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CjbHome.DataAccess.IdentityDb>
     {
@@ -27,6 +30,12 @@ namespace CjbHome.DataAccess.IdentityMigrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            // Uncomment this to add a dummy admin user
+            //var userStore = new UserStore<ApplicationUser>(context);
+            //var userManager = new ApplicationUserManager(userStore);
+            //var user = new ApplicationUser { UserName = "username" };
+            //userManager.Create(user, "password");
         }
     }
 }
