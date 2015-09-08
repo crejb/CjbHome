@@ -30,6 +30,13 @@ namespace CjbHome.DataAccess
             return new BlogPostDb();
         }
 
+        public IEnumerable<BlogPost> GetSortedBlogPosts()
+        {
+            return BlogPosts
+                .OrderByDescending(p => p.PostDate)
+                .ThenByDescending(p => p.PostTime);
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

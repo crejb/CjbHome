@@ -19,7 +19,9 @@ namespace CjbHome.Controllers
 
         public ActionResult Index()
         {
-            var recentPosts = _blogPostDb.BlogPosts.Take(3);
+            var recentPosts = _blogPostDb
+                .GetSortedBlogPosts()
+                .Take(3);
             var vm = new IndexViewModel { RecentPosts = recentPosts };
             return View(vm);
         }

@@ -19,7 +19,7 @@ namespace CjbHome.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            return View(_db.BlogPosts.ToList());
+            return View(_db.GetSortedBlogPosts());
         }
 
         // GET: Blog/Title

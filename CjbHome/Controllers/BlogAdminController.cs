@@ -15,12 +15,12 @@ namespace CjbHome.Controllers
     [Authorize]
     public class BlogAdminController : Controller
     {
-        private BlogPostDb db = new BlogPostDb();
+        private BlogPostDb _db = new BlogPostDb();
 
         // GET: BlogAdmin
         public ActionResult Index()
         {
-            return View(db.BlogPosts.ToList());
+            return View(_db.GetSortedBlogPosts().ToList());
         }
 
         // GET: BlogAdmin/Create
@@ -38,8 +38,8 @@ namespace CjbHome.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.BlogPosts.Add(blogPost);
-                db.SaveChanges();
+                _db.BlogPosts.Add(blogPost);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -53,7 +53,7 @@ namespace CjbHome.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            BlogPost blogPost = _db.BlogPosts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -70,8 +70,8 @@ namespace CjbHome.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blogPost).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(blogPost).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(blogPost);
@@ -84,7 +84,7 @@ namespace CjbHome.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            BlogPost blogPost = _db.BlogPosts.Find(id);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -97,15 +97,15 @@ namespace CjbHome.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BlogPost blogPost = db.BlogPosts.Find(id);
-            db.BlogPosts.Remove(blogPost);
-            db.SaveChanges();
+            BlogPost blogPost = _db.BlogPosts.Find(id);
+            _db.BlogPosts.Remove(blogPost);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public ActionResult Export()
         {
-            var xml = CjbHome.Services.ImportExportService.GetExportedData(db.BlogPosts);
+            var xml = CjbHome.Services.ImportExportService.GetExportedData(_db.BlogPosts);
             var xmlBytes = System.Text.Encoding.ASCII.GetBytes(xml);
             var stream = new MemoryStream(xmlBytes);
 
@@ -123,7 +123,7 @@ namespace CjbHome.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
