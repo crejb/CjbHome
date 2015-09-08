@@ -29,6 +29,17 @@ namespace CjbHome
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // Bundles for syntax highlighter
+            bundles.Add(new StyleBundle("~/Content/SyntaxHighlighter").Include(
+                      "~/Content/shCore.css",
+                      "~/Content/shThemeDefault.css"));
+            bundles.Add(new ScriptBundle("~/bundles/SyntaxHighlighter").Include(
+                        "~/Scripts/SyntaxHighlighter/shCore.js",
+                        "~/Scripts/SyntaxHighlighter/shBrushCSharp.js",
+                        "~/Scripts/SyntaxHighlighter/shBrushJava.js",
+                        "~/Scripts/SyntaxHighlighter/shBrushXml.js",
+                        "~/Scripts/SyntaxHighlighter/shBrushJScript.js"));
         }
     }
 }

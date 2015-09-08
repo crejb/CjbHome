@@ -11,5 +11,7 @@ namespace CjbHome.ViewModels.Blog
         public BlogPost Post { get; set; }
         public BlogPost NextPost { get; set; }
         public BlogPost PreviousPost { get; set; }
+
+        public bool PostRequiresSyntaxHighlight { get; set; }
     }
 }

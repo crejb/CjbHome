@@ -55,10 +55,25 @@ namespace CjbHome.Controllers
             {
                 Post = blogPost,
                 PreviousPost = prevPost,
-                NextPost = nextPost
+                NextPost = nextPost,
+                PostRequiresSyntaxHighlight = PostContainsSyntaxHighlight(blogPost)
             };
 
             return View("ViewPost", viewModel);
+        }
+
+        /// <summary>
+        /// The Syntax Highlighter js plugin requires code in a 'pre' block with a brush assigned.
+        /// If this is contained in the blog content, then the page should load the plugin.
+        /// </summary>
+        private bool PostContainsSyntaxHighlight(BlogPost blogPost)
+        {
+            if (string.IsNullOrWhiteSpace(blogPost.Content))
+            {
+                return false;
+            }
+
+            return blogPost.Content.Contains("<pre class=\"brush:");
         }
 
         protected override void Dispose(bool disposing)

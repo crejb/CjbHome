@@ -1,4 +1,20 @@
 ﻿@model CjbHome.ViewModels.Blog.ViewPostViewModel
+@section styles{
+    @if (Model.PostRequiresSyntaxHighlight)
+    {
+        @Styles.Render("~/Content/SyntaxHighlighter");
+    }
+}
+@section scripts{
+    @if (Model.PostRequiresSyntaxHighlight)
+    {
+        @Scripts.Render("~/bundles/SyntaxHighlighter");
+        <script type="text/javascript">
+            SyntaxHighlighter.all()
+        </script>
+    }
+}
+
 
 @{
     ViewBag.Title = Model.Post.Title;
