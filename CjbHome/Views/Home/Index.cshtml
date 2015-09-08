@@ -2,14 +2,13 @@
 @model CjbHome.ViewModels.Home.IndexViewModel
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
     ViewBag.TitleImage = "../../Content/images/header-2.png";
 }
 
 <div class="row" style="margin-top:20px">
     <div>
-        <div class="col-md-1 text-center">
-            @*<img src="../../Content/images/light-small.png" width="50" height="50" />*@
+        <div class="col-md-1 text-center" />
         </div>
         <div class="col-md-11">
             <div style="margin-bottom:20px">
@@ -24,7 +23,7 @@
                     </a>
                 </div>
             }
-            @Html.ActionLink("More thoughts >>", "Index", "Blog", null, new { @class="pull-left", style="margin-top:20px" })
+            @Html.ActionLink("More posts >>", "Index", "Blog", null, new { @class="pull-left", style="margin-top:20px" })
         </div>
     </div>
 </div>
@@ -33,8 +32,7 @@
 
 <div class="row" style="margin-top:20px">
     <div>
-        <div class="col-md-1 text-center">
-            @*<img src="../../Content/images/flask-small.png" width="50" height="50" />*@
+        <div class="col-md-1 text-center" />
         </div>
         <div class="col-md-11">
             <div style="margin-bottom:20px">
@@ -54,8 +52,7 @@
 
 <div class="row" style="margin-top:20px">
     <div>
-        <div class="col-md-1 text-center">
-            @*<img src="../../Content/images/question-small.png" width="50" height="50" />*@
+        <div class="col-md-1 text-center" />
         </div>
         <div class="col-md-11">
             <div style="margin-bottom:20px">

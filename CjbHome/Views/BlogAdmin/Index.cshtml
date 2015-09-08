@@ -15,9 +15,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LinkText)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -26,17 +23,11 @@
         <th>
             @Html.DisplayNameFor(model => model.PostTime)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HeaderImageUrl)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LinkText)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -45,9 +36,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PostTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HeaderImageUrl)
         </td>
         <td>
             @Html.ActionLink("View", "ViewPost", "Blog", new { id = item.LinkText }, null) |
