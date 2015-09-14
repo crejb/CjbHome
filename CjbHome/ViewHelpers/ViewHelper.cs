@@ -18,6 +18,7 @@ namespace CjbHome.ViewHelpers
             sb.AppendLine("    {");
             sb.AppendFormat("        selector: \"{0}\",", targetSelector).AppendLine();
             sb.AppendLine("        plugins: \"link image code\",");
+            sb.AppendLine("        valid_elements: \"*[*]\",");
             sb.AppendLine("        toolbar: [\"bold italic underline alignleft aligncenter alignright alignjustify styleselect fontsizeselect\",");
             sb.AppendLine("            \"bullist numlist outdent indent blockquote link image removeformat\"]");
             sb.AppendLine("    });");
