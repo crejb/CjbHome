@@ -28,8 +28,12 @@
     @Html.Raw(Model.Post.Content)
 </div>
 
-<hr />
-
+<p>
+    @foreach (var tag in Model.Post.Tags)
+    {
+        <span class="label label-default post-tag">@Html.ActionLink(tag.Title, "ViewPostByTag", new { tag = Html.Encode(tag.Title) })</span>
+    }
+</p>
 
 <p class="post-main-subtitle">
     Posted on @Html.DisplayFor(model => model.Post.PostDate) at @Html.DisplayFor(model => model.Post.PostTime)
