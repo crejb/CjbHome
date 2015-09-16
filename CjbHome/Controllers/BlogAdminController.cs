@@ -34,10 +34,12 @@ namespace CjbHome.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,LinkText,Title,PostDate,PostTime,Content,HeaderImageUrl")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Id,LinkText,Title,PostDate,PostTime,Content,HeaderImageUrl")] BlogPost blogPost, string tags)
         {
             if (ModelState.IsValid)
             {
+                SyncPostTags(blogPost, tags);
+
                 _db.BlogPosts.Add(blogPost);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,19 +64,82 @@ namespace CjbHome.Controllers
         }
 
         // POST: BlogAdmin/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,LinkText,Title,PostDate,PostTime,Content,HeaderImageUrl")] BlogPost blogPost)
+        public ActionResult Edit(int? id, string tags)
         {
-            if (ModelState.IsValid)
+            // Instead of using automatic model binding by having BlogPost as a param,
+            // manually bind the fields so we can get the existing value for tags without 
+            // automatically binding the new value
+            if (id == null)
             {
-                _db.Entry(blogPost).State = EntityState.Modified;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var blogPost = _db.BlogPosts.Find(id);
+            if (blogPost == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (TryUpdateModel(blogPost, "", new []{"LinkText", "Title", "PostDate", "PostTime", "Content", "HeaderImageUrl"}))
+            {
+                SyncPostTags(blogPost, tags);
+
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(blogPost);
+        }
+
+        private void SyncPostTags(BlogPost post, string tagsString)
+        {
+            var tagStrings = ParseTags(tagsString);
+
+            if (post.Tags == null)
+            {
+                post.Tags = new List<Tag>();
+            }
+
+            var newPostTags = new List<Tag>();
+            foreach (var tagString in tagStrings)
+            {
+                var tag = _db.Tags.FirstOrDefault(t => t.Title.Equals(tagString, StringComparison.CurrentCultureIgnoreCase));
+                if (tag == null)
+                {
+                    tag = new Tag { Title = tagString };
+                    _db.Tags.Add(tag);
+                }
+                newPostTags.Add(tag);
+
+
+                if (!post.Tags.Any(t => t.Title == tag.Title))
+                {
+                    post.Tags.Add(tag);
+                }
+            }
+
+            foreach (var tag in post.Tags.ToArray())
+            {
+                if (!newPostTags.Any(t => t.Title == tag.Title))
+                {
+                    post.Tags.Remove(tag);
+                }
+            }
+        }
+
+        private HashSet<string> ParseTags(string tagsString)
+        {
+            if (!string.IsNullOrWhiteSpace(tagsString))
+            {
+                return new HashSet<string>(
+                    tagsString
+                    .Split(',')
+                    .Select(tag => tag.Trim()));
+            }
+
+            return new HashSet<string>();
         }
 
         // GET: BlogAdmin/Delete/5
