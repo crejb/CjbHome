@@ -167,6 +167,14 @@
     <Compile Include="DataAccess\BlogMigrations\201509060400207_Initial.Designer.cs">
       <DependentUpon>201509060400207_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\BlogMigrations\201509151032044_AddTags.cs" />
+    <Compile Include="DataAccess\BlogMigrations\201509151032044_AddTags.Designer.cs">
+      <DependentUpon>201509151032044_AddTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\BlogMigrations\201509151052151_AddTags1.cs" />
+    <Compile Include="DataAccess\BlogMigrations\201509151052151_AddTags1.Designer.cs">
+      <DependentUpon>201509151052151_AddTags1.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\BlogMigrations\Configuration.cs" />
     <Compile Include="DataAccess\CjbHomeDataContext.cs" />
     <Compile Include="DataAccess\IdentityMigrations\201509060400307_Initial.cs" />
@@ -178,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -269,6 +278,7 @@
     <Content Include="Views\BlogAdmin\Index.cshtml" />
     <Content Include="Views\BlogAdmin\Import.cshtml" />
     <Content Include="Views\Home\Projects.cshtml" />
+    <Content Include="Views\Blog\ViewPostByTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +290,12 @@
   <ItemGroup>
     <EmbeddedResource Include="DataAccess\BlogMigrations\201509060400207_Initial.resx">
       <DependentUpon>201509060400207_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\BlogMigrations\201509151032044_AddTags.resx">
+      <DependentUpon>201509151032044_AddTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataAccess\BlogMigrations\201509151052151_AddTags1.resx">
+      <DependentUpon>201509151052151_AddTags1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAccess\IdentityMigrations\201509060400307_Initial.resx">
       <DependentUpon>201509060400307_Initial.cs</DependentUpon>

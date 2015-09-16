@@ -1,6 +1,10 @@
 namespace CjbHome.DataAccess.BlogMigrations
 {
+    using CjbHome.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -27,6 +31,25 @@ namespace CjbHome.DataAccess.BlogMigrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Tags.AddOrUpdate(
+                t => t.Title,
+                new Tag { Title = "C#" },
+                new Tag { Title = "WPF" },
+                new Tag { Title = "ASP.NET" }
+                );
+
+            context.BlogPosts.AddOrUpdate(
+                p => p.Title,
+                new BlogPost
+                {
+                    Title = "TestPost3",
+                    LinkText = "TestPost3",
+                    Content = "This is another post from code",
+                    PostDate = DateTime.Now,
+                    PostTime = DateTime.Now,
+                    Tags = new[] { context.Tags.First(t => t.Title == "C#"), context.Tags.First(t => t.Title == "WPF"), context.Tags.First(t => t.Title == "ASP.NET") }
+                });
         }
     }
 }

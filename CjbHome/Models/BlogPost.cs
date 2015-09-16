@@ -28,5 +28,7 @@ namespace CjbHome.Models
 
         [DataType(DataType.ImageUrl)]
         public string HeaderImageUrl { get; set; }
+
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

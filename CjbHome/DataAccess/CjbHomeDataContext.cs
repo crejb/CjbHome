@@ -20,6 +20,14 @@ namespace CjbHome.DataAccess
             }
         }
 
+        public DbSet<Tag> Tags
+        {
+            get
+            {
+                return Set<Tag>();
+            }
+        }
+
         public BlogPostDb()
             : base("DefaultConnection")
         {
@@ -32,15 +40,22 @@ namespace CjbHome.DataAccess
 
         public IEnumerable<BlogPost> GetSortedBlogPosts()
         {
-            return BlogPosts
-                .OrderByDescending(p => p.PostDate)
-                .ThenByDescending(p => p.PostTime);
+            return BlogPosts.ToOrderedList();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasDefaultSchema("CjbHome");
+        }
+    }
+
+    public static class BlogPostExtensions
+    {
+        public static IEnumerable<BlogPost> ToOrderedList(this IEnumerable<BlogPost> posts)
+        {
+            return posts.OrderByDescending(p => p.PostDate)
+                .ThenByDescending(p => p.PostTime);
         }
     }
 
