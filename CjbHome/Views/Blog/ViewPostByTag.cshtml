@@ -1,13 +1,15 @@
-﻿@model IEnumerable<CjbHome.Models.BlogPost>
+﻿@model CjbHome.Models.Tag
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = string.Format("Posts tagged '{0}'", Model.Title);
     ViewBag.TitleImage = "https://lh3.googleusercontent.com/-1uHFvXxlKE4/UnLDpJPvOhI/AAAAAAAAEXA/8lXyGIMoCXg/s800-Ic42/IMG_8042.JPG";
 }
 
+<h2>Posts tagged '@Model.Title'</h2>
+
 <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        @foreach (var post in Model)
+        @foreach (var post in Model.BlogPosts)
         {
             <div>
                 <a href="@Url.Action(post.LinkText)">

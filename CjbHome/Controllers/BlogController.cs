@@ -76,6 +76,27 @@ namespace CjbHome.Controllers
             return blogPost.Content.Contains("<pre class=\"brush:");
         }
 
+        // GET: Blog/Title
+        [Route("Blog/Tag/{tag}")]
+        public ActionResult ViewPostByTag(string tag)
+        {
+            if (tag == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var postTag = _db.Tags.FirstOrDefault(p => p.Title == tag);
+            if (postTag == null)
+            {
+                // If the tag does not exist, display an empty list of posts
+                postTag = new Tag { Title = tag, BlogPosts = new List<BlogPost>() };
+            }
+
+            postTag.BlogPosts = postTag.BlogPosts.ToOrderedList().ToList();
+
+            return View("ViewPostByTag", postTag);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

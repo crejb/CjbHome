@@ -67,6 +67,13 @@ a:hover, a:focus{
   display: inline;
 }
 
+.post-tag {
+    font-size: 12px;
+}
+.post-tag a {
+    color: white;
+}
+
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
