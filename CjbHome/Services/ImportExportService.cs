@@ -53,7 +53,9 @@ namespace CjbHome.Services
                         posts = (BlogPost[])deserialiser.Deserialize(xmlReader);
                     }
                 }
-                
+
+                var newTags = new Dictionary<string, Models.Tag>();
+
                 foreach (var post in posts)
                 {
                     var dbPost = new CjbHome.Models.BlogPost
@@ -72,8 +74,12 @@ namespace CjbHome.Services
                         var blogTag = db.Tags.FirstOrDefault(t => t.Title == tagString);
                         if (blogTag == null)
                         {
-                            blogTag = new Models.Tag { Title = tagString };
-                            db.Tags.Add(blogTag);
+                            if (!newTags.TryGetValue(tagString, out blogTag))
+                            {
+                                blogTag = new Models.Tag { Title = tagString };
+                                db.Tags.Add(blogTag);
+                                newTags.Add(tagString, blogTag);
+                            }
                         }
                         dbPost.Tags.Add(blogTag);
                     }
