@@ -163,23 +163,15 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DataAccess\BlogMigrations\201509060400207_Initial.cs" />
-    <Compile Include="DataAccess\BlogMigrations\201509060400207_Initial.Designer.cs">
-      <DependentUpon>201509060400207_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\BlogMigrations\201509151032044_AddTags.cs" />
-    <Compile Include="DataAccess\BlogMigrations\201509151032044_AddTags.Designer.cs">
-      <DependentUpon>201509151032044_AddTags.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\BlogMigrations\201509151052151_AddTags1.cs" />
-    <Compile Include="DataAccess\BlogMigrations\201509151052151_AddTags1.Designer.cs">
-      <DependentUpon>201509151052151_AddTags1.cs</DependentUpon>
+    <Compile Include="DataAccess\BlogMigrations\201509190500555_Initial.cs" />
+    <Compile Include="DataAccess\BlogMigrations\201509190500555_Initial.Designer.cs">
+      <DependentUpon>201509190500555_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\BlogMigrations\Configuration.cs" />
     <Compile Include="DataAccess\CjbHomeDataContext.cs" />
-    <Compile Include="DataAccess\IdentityMigrations\201509060400307_Initial.cs" />
-    <Compile Include="DataAccess\IdentityMigrations\201509060400307_Initial.Designer.cs">
-      <DependentUpon>201509060400307_Initial.cs</DependentUpon>
+    <Compile Include="DataAccess\IdentityMigrations\201509190501261_Initial.cs" />
+    <Compile Include="DataAccess\IdentityMigrations\201509190501261_Initial.Designer.cs">
+      <DependentUpon>201509190501261_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\IdentityMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -288,17 +280,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataAccess\BlogMigrations\201509060400207_Initial.resx">
-      <DependentUpon>201509060400207_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="DataAccess\BlogMigrations\201509190500555_Initial.resx">
+      <DependentUpon>201509190500555_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\BlogMigrations\201509151032044_AddTags.resx">
-      <DependentUpon>201509151032044_AddTags.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\BlogMigrations\201509151052151_AddTags1.resx">
-      <DependentUpon>201509151052151_AddTags1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataAccess\IdentityMigrations\201509060400307_Initial.resx">
-      <DependentUpon>201509060400307_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="DataAccess\IdentityMigrations\201509190501261_Initial.resx">
+      <DependentUpon>201509190501261_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
