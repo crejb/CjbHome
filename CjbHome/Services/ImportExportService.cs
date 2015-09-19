@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Xml;
+using System.Data.Entity.Migrations;
 using System.Xml.Serialization;
+using CjbHome.DataAccess;
 
 namespace CjbHome.Services
 {
@@ -35,6 +37,63 @@ namespace CjbHome.Services
                     var xml = sw.ToString(); // Your XML
                     return xml;
                 }
+            }
+        }
+
+        public static bool ImportedData(Stream stream, BlogPostDb db)
+        {
+            var deserialiser = new XmlSerializer(typeof(BlogPost[]));
+            try
+            {
+                BlogPost[] posts;
+                using (var streamReader = new StreamReader(stream))
+                {
+                    using (var xmlReader = XmlReader.Create(streamReader))
+                    {
+                        posts = (BlogPost[])deserialiser.Deserialize(xmlReader);
+                    }
+                }
+                
+                foreach (var post in posts)
+                {
+                    var dbPost = new CjbHome.Models.BlogPost
+                    {
+                        LinkText = post.LinkText,
+                        Title = post.Title,
+                        PostDate = post.PostDate,
+                        PostTime = post.PostTime,
+                        Content = post.Content,
+                        HeaderImageUrl = post.HeaderImageUrl,
+                        Tags = new List<CjbHome.Models.Tag>()
+                    };
+
+                    foreach (var tagString in post.Tags)
+                    {
+                        var blogTag = db.Tags.FirstOrDefault(t => t.Title == tagString);
+                        if (blogTag == null)
+                        {
+                            blogTag = new Models.Tag { Title = tagString };
+                            db.Tags.Add(blogTag);
+                        }
+                        dbPost.Tags.Add(blogTag);
+                    }
+
+                    var existingPost = db.BlogPosts.FirstOrDefault(p => p.LinkText == dbPost.LinkText);
+                    if (existingPost != null)
+                    {
+                        db.BlogPosts.Remove(existingPost);
+                    }
+
+                    db.BlogPosts.Add(dbPost);
+                }
+
+                db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 

@@ -184,6 +184,22 @@ namespace CjbHome.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Import(HttpPostedFileBase file)
+        {
+            if (file.ContentLength > 0)
+            {
+                var success = CjbHome.Services.ImportExportService.ImportedData(file.InputStream, _db);
+                if(!success)
+                {
+                    ViewBag.Error = "The import was not successful. Please try again.";
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
