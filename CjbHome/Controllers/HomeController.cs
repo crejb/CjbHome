@@ -21,16 +21,10 @@ namespace CjbHome.Controllers
         {
             var recentPosts = _blogPostDb
                 .GetSortedBlogPosts()
-                .Take(3);
+                .Take(4);
             var vm = new IndexViewModel { RecentPosts = recentPosts };
             return View(vm);
         }
-
-        public ActionResult Projects()
-        {
-            return View();
-        }
-
 
         public ActionResult About()
         {
